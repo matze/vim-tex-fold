@@ -1,3 +1,7 @@
+if exists("b:did_ftplugin")
+  finish
+endif
+
 function! LaTexFold(linenum)
     let line = getline(a:linenum)
     let next_line = getline(a:linenum+1)
@@ -20,3 +24,12 @@ function! LaTexFold(linenum)
 
     return '='
 endfunction
+
+setlocal foldmethod=expr
+setlocal foldexpr=LaTexFold(v:lnum)
+
+if exists('b:undo_ftplugin')
+  let b:undo_ftplugin .= "|setl foldexpr< foldmethod<"
+else
+  let b:undo_ftplugin = "setl foldexpr< foldmethod<"
+endif
