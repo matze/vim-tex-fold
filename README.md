@@ -4,6 +4,7 @@ A light-weight alternative to vim-latexsuite's folding. It uses a simple
 `foldexpr` to capture `\section`s, `\subsection`s and blocks defined with
 `\begin` and `\end`.
 
+![Screenshot showing an open section and two environments](http://i.imgur.com/ovltmkz.png)
 
 ## Installation
 
