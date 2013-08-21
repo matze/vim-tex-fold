@@ -1,3 +1,10 @@
+" =============================================================================
+" File: ftplugin/tex.vim
+" Description: Provide foldexpr and foldtext for TeX files
+" Author: Matthias Vogelgesang <github.com/matze>
+"
+" =============================================================================
+"
 if exists("b:did_ftplugin")
   finish
 endif
