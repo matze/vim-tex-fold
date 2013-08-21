@@ -2,31 +2,53 @@ if exists("b:did_ftplugin")
   finish
 endif
 
-function! LaTexFold(linenum)
-    let line = getline(a:linenum)
-    let next_line = getline(a:linenum+1)
-
-    if next_line =~ '^\s*\\section' || next_line =~ '^\s*\\subsection'
-        return 0
-    endif
-
-    if line =~ '^\s*\\documentclass'
-        return 1
-    endif
+function! LaTeXFold(lnum)
+    let line = getline(a:lnum)
 
     if line =~ '^\s*\\section'
-        return 2
+        return '>1'
     endif
 
     if line =~ '^\s*\\subsection'
-        return 3
+        return '>2'
+    endif
+
+    if line =~ '^\s*\\subsubsection'
+        return '>3'
+    endif
+
+    if line =~ '^\s*\\begin{'
+        return 'a1'
+    endif
+
+    if line =~ '^\s*\\end{'
+        return 's1'
     endif
 
     return '='
 endfunction
 
+function! LaTeXFoldText()
+    let fold_line = getline(v:foldstart)
+
+    if fold_line =~ '^\s*\\\(sub\)*section'
+        let pattern = '\\\(sub\)*section{\([^}]*\)}'
+        let line = ' ' . substitute(fold_line, pattern, '➿ \2', '') . ' '
+        return '+' . repeat(v:folddashes, 2) . line
+    endif
+
+    if fold_line =~ '^\s*\\begin'
+        let pattern = '\\begin{\([^}]*\)}'
+        let line = ' ' . substitute(fold_line, pattern, '✎  \1', '') . ' '
+        return '+' . repeat(v:folddashes, 2) . line
+    endif
+
+    return fold_line
+endfunction
+
 setlocal foldmethod=expr
-setlocal foldexpr=LaTexFold(v:lnum)
+setlocal foldexpr=LaTeXFold(v:lnum)
+setlocal foldtext=LaTeXFoldText()
 
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= "|setl foldexpr< foldmethod<"
