@@ -1,0 +1,51 @@
+*tex-fold.txt* Folds for TeX sources
+
+Author: Matthias Vogelgesang <github.com/matze>
+License: MIT (see |tex-fold-license|)
+
+===============================================================================
+Contents                                                   *tex-fold-contents*
+
+    1. Usage..................................|tex-fold-usage|
+    2. Options................................|tex-fold-options|
+    3. License................................|tex-fold-license|
+    4. Changelog..............................|tex-fold-changelog|
+
+===============================================================================
+1. Usage                                                      *tex-fold-usage*
+
+The tex-fold plugin provides a |foldexpr| function using regular expressions to
+fold TeX sources. When enabled it will fold sections and environments defined
+with begin and end.
+
+===============================================================================
+2. Options                                                  *tex-fold-options*
+
+Use these options to customize tex-fold:
+
+                                              *'g:tex_fold_override_foldtext'*
+Use tex-folds own foldtext function instead of the builtin one:
+    let g:tex_fold_override_foldtext = 1
+<
+
+                                                       *'g:tex_fold_sec_char'*
+Set the string to prepend the foldtext for sections: >
+    let g:tex_fold_sec_char = '>'
+<
+
+                                                       *'g:tex_fold_env_char'*
+Set the string to prepend the foldtext for environments: >
+    let g:tex_fold_env_char = 'E'
+<
+===============================================================================
+3. License                                                  *tex-fold-license*
+
+This plugin is copyright by Matthias Vogelgesang and licensed under the MIT
+license.
+
+===============================================================================
+3. Changelog                                              *tex-fold-changelog*
+
+v1.0-not-yet-released
+
+vim:ft=help:
