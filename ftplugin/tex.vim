@@ -1,8 +1,15 @@
 if exists("b:did_ftplugin")
   finish
 endif
+let b:did_ftplugin = 1
 
-function! LaTeXFold(lnum)
+
+setlocal foldmethod=expr
+setlocal foldexpr=TeXFold(v:lnum)
+setlocal foldtext=TeXFoldText()
+
+
+function! TeXFold(lnum)
     let line = getline(a:lnum)
 
     if line =~ '^\s*\\section'
@@ -28,7 +35,7 @@ function! LaTeXFold(lnum)
     return '='
 endfunction
 
-function! LaTeXFoldText()
+function! TeXFoldText()
     let fold_line = getline(v:foldstart)
 
     if fold_line =~ '^\s*\\\(sub\)*section'
@@ -46,9 +53,6 @@ function! LaTeXFoldText()
     return fold_line
 endfunction
 
-setlocal foldmethod=expr
-setlocal foldexpr=LaTeXFold(v:lnum)
-setlocal foldtext=LaTeXFoldText()
 
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= "|setl foldexpr< foldmethod< foldtext<"
