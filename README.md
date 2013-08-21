@@ -15,3 +15,8 @@ Bundle 'matze/vim-tex-fold'
 ~~~
 
 to your `.vimrc`
+
+
+## License
+
+This plugin is licensed under MIT license.
