@@ -51,7 +51,7 @@ setlocal foldexpr=LaTeXFold(v:lnum)
 setlocal foldtext=LaTeXFoldText()
 
 if exists('b:undo_ftplugin')
-  let b:undo_ftplugin .= "|setl foldexpr< foldmethod<"
+  let b:undo_ftplugin .= "|setl foldexpr< foldmethod< foldtext<"
 else
-  let b:undo_ftplugin = "setl foldexpr< foldmethod<"
+  let b:undo_ftplugin = "setl foldexpr< foldmethod< foldtext<"
 endif
