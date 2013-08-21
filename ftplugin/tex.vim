@@ -8,8 +8,10 @@
 if exists("b:did_ftplugin")
   finish
 endif
+
 let b:did_ftplugin = 1
 
+"{{{ Globals
 
 if !exists('g:tex_fold_sec_char')
     let g:tex_fold_sec_char = '➿'
@@ -19,11 +21,22 @@ if !exists('g:tex_fold_env_char')
     let g:tex_fold_env_char = '✎'
 endif
 
+if !exists('g:tex_fold_override_foldtext')
+    let g:tex_fold_override_foldtext = 1
+endif
+
+"}}}
+"{{{ Fold options
 
 setlocal foldmethod=expr
 setlocal foldexpr=TeXFold(v:lnum)
-setlocal foldtext=TeXFoldText()
 
+if g:tex_fold_override_foldtext
+    setlocal foldtext=TeXFoldText()
+endif
+
+"}}}
+"{{{ Functions
 
 function! TeXFold(lnum)
     let line = getline(a:lnum)
@@ -66,9 +79,12 @@ function! TeXFoldText()
     return '+' . repeat(v:folddashes, 2) . line
 endfunction
 
+"}}}
+"{{{ Undo
 
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= "|setl foldexpr< foldmethod< foldtext<"
 else
   let b:undo_ftplugin = "setl foldexpr< foldmethod< foldtext<"
 endif
+"}}}
