@@ -11,6 +11,15 @@ endif
 let b:did_ftplugin = 1
 
 
+if !exists('g:tex_fold_sec_char')
+    let g:tex_fold_sec_char = '➿'
+endif
+
+if !exists('g:tex_fold_env_char')
+    let g:tex_fold_env_char = '✎'
+endif
+
+
 setlocal foldmethod=expr
 setlocal foldexpr=TeXFold(v:lnum)
 setlocal foldtext=TeXFoldText()
@@ -47,13 +56,15 @@ function! TeXFoldText()
 
     if fold_line =~ '^\s*\\\(sub\)*section'
         let pattern = '\\\(sub\)*section{\([^}]*\)}'
-        let line = ' ' . substitute(fold_line, pattern, '➿ \2', '') . ' '
+        let repl = g:tex_fold_sec_char . ' \2'
+        let line = ' ' . substitute(fold_line, pattern, repl, '') . ' '
         return '+' . repeat(v:folddashes, 2) . line
     endif
 
     if fold_line =~ '^\s*\\begin'
         let pattern = '\\begin{\([^}]*\)}'
-        let line = ' ' . substitute(fold_line, pattern, '✎  \1', '') . ' '
+        let repl = g:tex_fold_env_char . ' \1'
+        let line = ' ' . substitute(fold_line, pattern, repl, '') . ' '
         return '+' . repeat(v:folddashes, 2) . line
     endif
 
