@@ -57,18 +57,13 @@ function! TeXFoldText()
     if fold_line =~ '^\s*\\\(sub\)*section'
         let pattern = '\\\(sub\)*section{\([^}]*\)}'
         let repl = g:tex_fold_sec_char . ' \2'
-        let line = ' ' . substitute(fold_line, pattern, repl, '') . ' '
-        return '+' . repeat(v:folddashes, 2) . line
-    endif
-
-    if fold_line =~ '^\s*\\begin'
+    elseif fold_line =~ '^\s*\\begin'
         let pattern = '\\begin{\([^}]*\)}'
         let repl = g:tex_fold_env_char . ' \1'
-        let line = ' ' . substitute(fold_line, pattern, repl, '') . ' '
-        return '+' . repeat(v:folddashes, 2) . line
     endif
 
-    return fold_line
+    let line = ' ' . substitute(fold_line, pattern, repl, '') . ' '
+    return '+' . repeat(v:folddashes, 2) . line
 endfunction
 
 
