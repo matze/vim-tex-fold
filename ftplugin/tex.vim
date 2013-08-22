@@ -25,6 +25,10 @@ if !exists('g:tex_fold_override_foldtext')
     let g:tex_fold_override_foldtext = 1
 endif
 
+if !exists('g:tex_fold_allow_marker')
+    let g:tex_fold_allow_marker = 1
+endif
+
 "}}}
 "{{{ Fold options
 
@@ -65,6 +69,16 @@ function! TeXFold(lnum)
         return 's1'
     endif
 
+    if g:tex_fold_allow_marker
+        if line =~ '^[^%]*%[^{]*{{{'
+            return 'a1'
+        endif
+
+        if line =~ '^[^%]*%[^}]*}}}'
+            return 's1'
+        endif
+    endif
+
     return '='
 endfunction
 
@@ -73,14 +87,17 @@ function! TeXFoldText()
 
     if fold_line =~ '^\s*\\\(sub\)*section'
         let pattern = '\\\(sub\)*section{\([^}]*\)}'
-        let repl = g:tex_fold_sec_char . ' \2'
+        let repl = ' ' . g:tex_fold_sec_char . ' \2'
     elseif fold_line =~ '^\s*\\begin'
         let pattern = '\\begin{\([^}]*\)}'
-        let repl = g:tex_fold_env_char . ' \1'
+        let repl = ' ' . g:tex_fold_env_char . ' \1'
+    elseif fold_line =~ '^[^%]*%[^{]*{{{'
+        let pattern = '^[^{]*{' . '{{\([.]*\)'
+        let repl = '\1'
     endif
 
-    let line = ' ' . substitute(fold_line, pattern, repl, '') . ' '
-    return '+' . repeat(v:folddashes, 2) . line
+    let line = substitute(fold_line, pattern, repl, '') . ' '
+    return '+' . v:folddashes . line
 endfunction
 
 "}}}

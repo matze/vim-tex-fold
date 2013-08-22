@@ -37,6 +37,11 @@ Set the string to prepend the foldtext for sections: >
 Set the string to prepend the foldtext for environments: >
     let g:tex_fold_env_char = 'E'
 <
+                                                   *'g:tex_fold_allow_marker'*
+Besides folding sections and environments, allow folds to be defined with {{{
+markers: >
+    let g:tex_fold_allow_marker = 1
+<
 ===============================================================================
 3. License                                                  *tex-fold-license*
 
