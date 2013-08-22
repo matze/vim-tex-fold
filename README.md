@@ -11,6 +11,9 @@ can still define manual markers, e.g.
 %}}}
 ~~~
 
+To customize vim-tex-fold, have a look at the
+[options](https://github.com/matze/vim-tex-fold/blob/master/doc/tex-fold.txt#L22).
+
 ## Installation
 
 vim-tex-fold is compatible with all major plugin managers. To install it with

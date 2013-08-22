@@ -51,6 +51,7 @@ license.
 ===============================================================================
 3. Changelog                                              *tex-fold-changelog*
 
-v1.0-not-yet-released
+v1.0
+    * Released on 08/22/13
 
 vim:ft=help:
