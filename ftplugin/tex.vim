@@ -61,11 +61,11 @@ function! TeXFold(lnum)
         return '>4'
     endif
 
-    if line =~ '^\s*\\begin{'
+    if line =~ '^\s*\\begin{frame'
         return 'a1'
     endif
 
-    if line =~ '^\s*\\end{'
+    if line =~ '^\s*\\end{frame'
         return 's1'
     endif
 
