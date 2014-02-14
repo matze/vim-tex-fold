@@ -45,20 +45,16 @@ endif
 function! TeXFold(lnum)
     let line = getline(a:lnum)
 
-    if line =~ '^\s*\\chapter'
+    if line =~ '^\s*\\section'
         return '>1'
     endif
 
-    if line =~ '^\s*\\section'
+    if line =~ '^\s*\\subsection'
         return '>2'
     endif
 
-    if line =~ '^\s*\\subsection'
-        return '>3'
-    endif
-
     if line =~ '^\s*\\subsubsection'
-        return '>4'
+        return '>3'
     endif
 
     if line =~ '^\s*\\begin{frame'
