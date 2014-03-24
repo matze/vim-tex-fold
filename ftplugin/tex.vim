@@ -14,7 +14,7 @@ let b:did_ftplugin = 1
 "{{{ Globals
 
 if !exists('g:tex_fold_sec_char')
-    let g:tex_fold_sec_char = '➿'
+    let g:tex_fold_sec_char = '➜'
 endif
 
 if !exists('g:tex_fold_env_char')
