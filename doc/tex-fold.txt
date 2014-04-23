@@ -51,6 +51,9 @@ license.
 ===============================================================================
 3. Changelog                                              *tex-fold-changelog*
 
+v1.1
+    * Released on 04/23/14
+    * Fixes incompatibility issue with NERDcommenter.
 v1.0
     * Released on 08/22/13
 
