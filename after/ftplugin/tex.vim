@@ -59,6 +59,30 @@ function! TeXFold(lnum)
         return 's1'
     endif
 
+    if line =~ '^\s*\\begin{tabular'
+        return 'a1'
+    endif
+
+    if line =~ '^\s*\\end{tabular'
+        return 's1'
+    endif
+
+    if line =~ '^\s*\\begin{figure'
+        return 'a1'
+    endif
+
+    if line =~ '^\s*\\end{figure'
+        return 's1'
+    endif
+
+    if line =~ '^\s*\\begin{align'
+        return 'a1'
+    endif
+
+    if line =~ '^\s*\\end{align'
+        return 's1'
+    endif
+
     if g:tex_fold_allow_marker
         if line =~ '^[^%]*%[^{]*{{{'
             return 'a1'
