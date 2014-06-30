@@ -51,6 +51,10 @@ license.
 ===============================================================================
 3. Changelog                                              *tex-fold-changelog*
 
+v1.2
+    * Released on 06/30/14
+    * Fixes incompatibility issue with Vim 7.4
+    * Fold figure, tabular and align environments. Thanks @DanielAndreasen.
 v1.1
     * Released on 04/23/14
     * Fixes incompatibility issue with NERDcommenter.
