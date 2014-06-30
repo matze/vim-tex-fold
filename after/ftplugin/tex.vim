@@ -51,35 +51,11 @@ function! TeXFold(lnum)
         return '>3'
     endif
 
-    if line =~ '^\s*\\begin{frame'
+    if line =~ '^\s*\\begin{\(frame\|tabular\|figure\|align\)'
         return 'a1'
     endif
 
-    if line =~ '^\s*\\end{frame'
-        return 's1'
-    endif
-
-    if line =~ '^\s*\\begin{tabular'
-        return 'a1'
-    endif
-
-    if line =~ '^\s*\\end{tabular'
-        return 's1'
-    endif
-
-    if line =~ '^\s*\\begin{figure'
-        return 'a1'
-    endif
-
-    if line =~ '^\s*\\end{figure'
-        return 's1'
-    endif
-
-    if line =~ '^\s*\\begin{align'
-        return 'a1'
-    endif
-
-    if line =~ '^\s*\\end{align'
+    if line =~ '^\s*\\end{\(frame\|tabular\|figure\|align\)'
         return 's1'
     endif
 
