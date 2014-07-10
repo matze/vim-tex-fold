@@ -38,6 +38,7 @@ endif
 
 function! TeXFold(lnum)
     let line = getline(a:lnum)
+    let envs = '\(frame\|table\|figure\|align\|lstlisting\)'
 
     if line =~ '^\s*\\section'
         return '>1'
@@ -51,11 +52,11 @@ function! TeXFold(lnum)
         return '>3'
     endif
 
-    if line =~ '^\s*\\begin{\(frame\|tabular\|figure\|align\)'
+    if line =~ '^\s*\\begin{' . envs
         return 'a1'
     endif
 
-    if line =~ '^\s*\\end{\(frame\|tabular\|figure\|align\)'
+    if line =~ '^\s*\\end{' . envs
         return 's1'
     endif
 
