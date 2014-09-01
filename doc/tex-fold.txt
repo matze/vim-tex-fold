@@ -24,7 +24,7 @@ with begin and end.
 Use these options to customize tex-fold:
 
                                               *'g:tex_fold_override_foldtext'*
-Use tex-folds own foldtext function instead of the builtin one:
+Use tex-folds own foldtext function instead of the builtin one: >
     let g:tex_fold_override_foldtext = 1
 <
 
@@ -42,6 +42,12 @@ Besides folding sections and environments, allow folds to be defined with {{{
 markers: >
     let g:tex_fold_allow_marker = 1
 <
+                                                *'g:tex_fold_additional_envs'*
+Per default, tex-fold folds figure, table, align, lstlisting and frame
+environments. If you want to fold more, you can list them with: >
+    let g:tex_fold_additional_envs = ['example']
+<
+
 ===============================================================================
 3. License                                                  *tex-fold-license*
 
@@ -51,6 +57,9 @@ license.
 ===============================================================================
 3. Changelog                                              *tex-fold-changelog*
 
+v1.3
+    * Released on 09/01/14
+    * Add g:tex_fold_additional_envs. Thanks @fwang2.
 v1.2
     * Released on 06/30/14
     * Fixes incompatibility issue with Vim 7.4
