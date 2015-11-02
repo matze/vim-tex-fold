@@ -27,6 +27,10 @@ if !exists('g:tex_fold_additional_envs')
     let g:tex_fold_additional_envs = []
 endif
 
+if !exists('g:tex_fold_use_default_envs')
+    let g:tex_fold_use_default_envs = 1
+endif
+
 "}}}
 "{{{ Fold options
 
@@ -42,7 +46,9 @@ endif
 
 function! TeXFold(lnum)
     let line = getline(a:lnum)
-    let envs = '\(' . join(['frame', 'table', 'figure', 'align', 'lstlisting'] + g:tex_fold_additional_envs, '\|') . '\)'
+    let default_envs = g:tex_fold_use_default_envs?
+        \['frame', 'table', 'figure', 'align', 'lstlisting']: []
+    let envs = '\(' . join(default_envs + g:tex_fold_additional_envs, '\|') . '\)'
 
     if line =~ '^\s*\\section'
         return '>1'

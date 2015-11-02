@@ -47,6 +47,12 @@ Per default, tex-fold folds figure, table, align, lstlisting and frame
 environments. If you want to fold more, you can list them with: >
     let g:tex_fold_additional_envs = ['example']
 <
+                                               *'g:tex_fold_use_default_envs'*
+Per default, tex-fold folds figure, table, align, lstlisting and frame
+environments. If you don't want to fold these environments, set this variable
+to 0: >
+    let g:tex_fold_use_default_envs = 0
+<
 
 ===============================================================================
 3. License                                                  *tex-fold-license*
