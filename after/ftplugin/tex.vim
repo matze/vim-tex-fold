@@ -31,6 +31,10 @@ if !exists('g:tex_fold_use_default_envs')
     let g:tex_fold_use_default_envs = 1
 endif
 
+if !exists('g:tex_fold_ignore_envs')
+    let g:tex_fold_ignore_envs = 0
+endif
+
 "}}}
 "{{{ Fold options
 
@@ -62,12 +66,14 @@ function! TeXFold(lnum)
         return '>3'
     endif
 
-    if line =~ '^\s*\\begin{' . envs
-        return 'a1'
-    endif
+    if g:tex_fold_ignore_envs
+        if line =~ '^\s*\\begin{' . envs
+            return 'a1'
+        endif
 
-    if line =~ '^\s*\\end{' . envs
-        return 's1'
+        if line =~ '^\s*\\end{' . envs
+            return 's1'
+        endif
     endif
 
     if g:tex_fold_allow_marker

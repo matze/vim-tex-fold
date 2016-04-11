@@ -43,16 +43,19 @@ markers: >
     let g:tex_fold_allow_marker = 1
 <
                                                 *'g:tex_fold_additional_envs'*
-Per default, tex-fold folds figure, table, align, lstlisting and frame
+By default, tex-fold folds figure, table, align, lstlisting and frame
 environments. If you want to fold more, you can list them with: >
     let g:tex_fold_additional_envs = ['example']
 <
                                                *'g:tex_fold_use_default_envs'*
-Per default, tex-fold folds figure, table, align, lstlisting and frame
+By default, tex-fold folds figure, table, align, lstlisting and frame
 environments. If you don't want to fold these environments, set this variable
 to 0: >
     let g:tex_fold_use_default_envs = 0
 <
+                                                    *'g:tex_fold_ignore_envs'*
+To disable matching environments at all set: >
+    let g:tex_fold_ignore_envs = 1
 
 ===============================================================================
 3. License                                                  *tex-fold-license*
