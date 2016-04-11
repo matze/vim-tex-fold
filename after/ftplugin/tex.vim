@@ -66,7 +66,7 @@ function! TeXFold(lnum)
         return '>3'
     endif
 
-    if g:tex_fold_ignore_envs
+    if !g:tex_fold_ignore_envs
         if line =~ '^\s*\\begin{' . envs
             return 'a1'
         endif
