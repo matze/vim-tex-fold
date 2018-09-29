@@ -93,7 +93,7 @@ function! TeXFoldText()
     let fold_line = getline(v:foldstart)
 
     if fold_line =~ '^\s*\\\(sub\)*section'
-        let pattern = '\\\(sub\)*section{\([^}]*\)}'
+        let pattern = '\\\(sub\)*section\*\={\([^}]*\)}'
         let repl = ' ' . g:tex_fold_sec_char . ' \2'
     elseif fold_line =~ '^\s*\\begin'
         let pattern = '\\begin{\([^}]*\)}'
